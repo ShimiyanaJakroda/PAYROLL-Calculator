@@ -25,6 +25,9 @@ public class INDEX {
     double gov_Withholding = grossPay * goverTaxRate;
     double netPay = grossPay - (fed_Withholding + gov_Withholding);
 
+    // The if statement below states that we should only use positive inputs
+    // throughout
+    // the entry points if any negative is entered it wont give the out put
     if (hours_Worked > 0 && hourlyPayRate > 0 && federalTaxRate > 0 && goverTaxRate > 0) {
       System.out.println("\nPayroll Statement for " + name);
       System.out.println("Hours worked: " + hours_Worked);
