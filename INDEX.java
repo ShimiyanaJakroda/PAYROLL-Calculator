@@ -1,52 +1,44 @@
-import java.util.Scanner;
+
+import java.util.Scanner; // Scanner Library which allows us to scan
 
 public class INDEX {
-
   public static void main(String[] args) {
+    Scanner input = new Scanner(System.in); //
 
-    Scanner input = new Scanner(System.in);
-    String name;
-    double hours, hours_payrate, fedwithholding_rate, fedstate_tax, grosspay;
+    System.out.print("Enter employee's name: ");
+    String name = input.nextLine();
 
-    System.out.print("Enter employee name: ");
-    name = input.nextLine();
     System.out.print("Enter number of hours worked in a week: ");
-    hours = input.nextDouble();
+    double hours_Worked = input.nextDouble();
+
     System.out.print("Enter hourly pay rate: ");
-    hours_payrate = input.nextDouble();
-    System.out.print("Enter federal tax withholding rate: ");
-    fedwithholding_rate = input.nextDouble();
-    System.out.print("Enter state tax withholding rate: ");
-    fedstate_tax = input.nextDouble();
+    double hourlyPayRate = input.nextDouble();
 
-    System.out.print("\n\n");
-    System.out.print("******WORKERS INFORMATION BEFORE DEDUCTIONS******:");
-    System.out.print("\n");
+    System.out.print("Enter federal tax withholding rate (20%): ");
+    double federalTaxRate = input.nextDouble() / 100;
 
-    System.out.print("Employee Name: " + name);
-    System.out.print("\nHours worked: " + hours);
-    System.out.print("\nPay rate: $ " + hours_payrate);
-    // Calculating the grosspay
-    grosspay = hours * hours_payrate;
-    System.out.print("\nGross Pay: $ " + grosspay);
+    System.out.print("Enter government tax withholding rate (9%): ");
+    double goverTaxRate = input.nextDouble() / 100;
+    // Formulars used in the program
+    double grossPay = hours_Worked * hourlyPayRate;
+    double fed_Withholding = grossPay * federalTaxRate;
+    double gov_Withholding = grossPay * goverTaxRate;
+    double netPay = grossPay - (fed_Withholding + gov_Withholding);
 
-    System.out.print("\n\n");
-    System.out.print("******DEDUCTIONS******:");
-    System.out.print("\n");
-    // Calculating the deductions
+    if (hours_Worked > 0 && hourlyPayRate > 0 && federalTaxRate > 0 && goverTaxRate > 0) {
+      System.out.println("\nPayroll Statement for " + name);
+      System.out.println("Hours worked: " + hours_Worked);
+      System.out.println("Hourly pay rate: $ " + hourlyPayRate);
+      System.out.println("Gross pay: $ " + grossPay);
+      System.out.println("Deductions:");
+      System.out.println("  Federal Tax Withholding: $ " + fed_Withholding);
+      System.out.println(" Government Tax Withholding: $ " + gov_Withholding);
+      System.out.println("Net pay: $ " + netPay);
+    }
 
-    fedwithholding_rate = (fedstate_tax * grosspay) / 0.2;
-    System.out.print("\nFederal with Holding (20%): $ " + fedwithholding_rate);
+    else {
+      System.out.println("\nAll the Values you enter should be positive values \n");
+    }
 
-    double statewithholding = (fedstate_tax * grosspay) / 0.09;
-    System.out.print("\nState Withholding  (9.0%): $ " + fedwithholding_rate);
-
-    double deduction = fedwithholding_rate + fedwithholding_rate;
-    System.out.print("\nTotal Deduction: $ " + deduction);
-
-    double netPay = (grosspay) - deduction;
-     System.out.print("\nTotal Netpay: $ " + netPay);
-
-    
   }
 }
