@@ -1,9 +1,8 @@
-
 import java.util.Scanner; // Scanner Library which allows us to scan
 
 public class INDEX {
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in); //
+    Scanner input = new Scanner(System.in); // Scanner propert
 
     System.out.print("Enter employee's name: ");
     String name = input.nextLine();
@@ -29,18 +28,28 @@ public class INDEX {
     // throughout
     // the entry points if any negative is entered it wont give the out put
     if (hours_Worked > 0 && hourlyPayRate > 0 && federalTaxRate > 0 && goverTaxRate > 0) {
-      System.out.println("\nPayroll Statement for " + name);
+      System.out.println("\n********* PERSONAL INPUTS************");
+
+      System.out.println("Payroll Statement for " + name);
       System.out.println("Hours worked: " + hours_Worked);
       System.out.println("Hourly pay rate: $ " + hourlyPayRate);
+
+      System.out.println("\n********* GROSSPAY************");
       System.out.println("Gross pay: $ " + grossPay);
+
+      System.out.println("\n********* TAX DEDUCTION************");
       System.out.println("Deductions:");
       System.out.println("  Federal Tax Withholding: $ " + fed_Withholding);
       System.out.println(" Government Tax Withholding: $ " + gov_Withholding);
+
+      System.out.println("\n********* NETPAY FOR THE WORKER************shimi");
       System.out.println("Net pay: $ " + netPay);
     }
 
     else {
-      System.out.println("\nAll the Values you enter should be positive values \n");
+      System.out.println("\nAll the Values you enter should be positive values \n");// When the worker enters negative
+                                                                                    // numbers
+
     }
 
   }
